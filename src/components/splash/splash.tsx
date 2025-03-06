@@ -1,6 +1,6 @@
 // Splash.tsx
 import React from 'react';
-import { SplashImg } from '../assets';
+import { SplashImg } from '../../assets';
 
 const Splash: React.FC = () => {
   return (

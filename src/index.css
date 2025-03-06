@@ -10,11 +10,20 @@
   box-sizing: border-box;
 }
 body{
-  width: 375px;
-  min-height: fit-content;
-  height: 100%;
+  min-width: 375px;
+  max-width: 375px; /* Allow the width to be responsive */
+  width: 100%; /* Full width of the container */
+  height: fit-content;
   background: linear-gradient(to bottom, #121420, #050505);
   color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
+  overflow: hidden; /* Prevent scrollbars */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
 }
