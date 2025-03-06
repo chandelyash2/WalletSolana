@@ -1,0 +1,20 @@
+/* src/index.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  width: 375px;
+  min-height: fit-content;
+  height: 100%;
+  background: linear-gradient(to bottom, #121420, #050505);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
