@@ -1,29 +1,31 @@
-/* src/index.css */
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
+
+body {
+  width: 100%;
   min-width: 375px;
-  max-width: 375px; /* Allow the width to be responsive */
-  width: 100%; /* Full width of the container */
-  height: fit-content;
-  background: linear-gradient(to bottom, #121420, #050505);
-  color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  overflow: hidden; /* Prevent scrollbars */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Stack children vertically */
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
+  height: auto;
+  max-height: 600px; /* Adjust based on content */
+  overflow-y: auto; /* Allow scrolling */
+  background-color: #090B1A;
+  font-family: "Manrope", sans-serif;
 }
 
+#root {
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+}
+
+/* Ensure scrollbar is visible */
 ::-webkit-scrollbar {
-  display: none; /* Hides the scrollbar */
+  width: 0px; /* Hide scrollbar in Chrome/Safari */
+  height: 0px;
+  background: transparent;
 }

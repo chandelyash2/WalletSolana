@@ -1,10 +1,13 @@
-import { useNavigate } from "react-router-dom";
 
-export const AddWalletHeader: React.FC = () => {
-  const navigate = useNavigate();
+interface NavigationBarTitleProps{
+  callback:Function;
+  title:string;
+}
+
+export const NavigationBarTitle : React.FC<NavigationBarTitleProps> = ({callback,title}) => {
   return (
     <div className="relative flex items-center w-full" style={{paddingTop:"20px"}}>
-      <button className="absolute text-white cursor-pointer left-4" onClick={()=> navigate(-1)}>
+      <button className="absolute text-white cursor-pointer left-4" onClick={()=> callback()}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-6 h-6"
@@ -20,7 +23,7 @@ export const AddWalletHeader: React.FC = () => {
           />
         </svg>
       </button>
-      <h1 className="w-full text-xl font-normal text-center text-white">Add a wallet</h1>
+      <h1 className="w-full text-xl font-normal text-center text-white">{title}</h1>
     </div>
   );
 };
