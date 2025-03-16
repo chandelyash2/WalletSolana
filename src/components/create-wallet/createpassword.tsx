@@ -129,7 +129,8 @@ const CreatePassword: React.FC<CreatePasswordProps> = ({
           <input
             onChange={()=>setChecked(!checked)}
             type="checkbox"
-            className="flex items-center justify-center w-6 h-4 bg-transparent border border-white-600 appearance-none rounded-[3px] checked:bg-[#1142C7] checked:border-transparent focus:ring-0"
+            // className="flex items-center justify-center w-6 h-4 bg-transparent border border-white-600 appearance-none rounded-[3px] checked:bg-[#1142C7] checked:border-transparent focus:ring-0 after:content-['✔'] after:text-white"
+            className="flex items-center justify-center w-6 h-4 bg-transparent border border-white-600 appearance-none rounded-[3px] checked:bg-[#1142C7] checked:border-transparent focus:ring-0 after:content-['✔'] after:text-white after:text-[12px] after:font-bold after:flex after:items-center after:justify-center checked:after:opacity-100 after:opacity-0"
           />
 
           <p className="text-[13px] text-white font-[100]">

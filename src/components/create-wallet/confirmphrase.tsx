@@ -4,23 +4,6 @@ import { PrimaryButton, NavigationBarTitle } from '../index';
 import MnemonicsInputBox from './mnemonicsinputbox';
 import Stepper from './stepper';
 import { useAppContext } from '../../context/useappcontext';
-// import { useNavigate } from 'react-router-dom';
-// import { PUBLIC_ROUTES } from '../../constants';
-
-const recoveryWords = [
-  'cup',
-  'admit',
-  '',
-  'debris',
-  'look',
-  'kiwi',
-  'blog',
-  '',
-  'syrub',
-  'many',
-  '',
-  'initiate',
-];
 
 interface StepType {
   id: number;
@@ -49,18 +32,60 @@ const ComfirmPhrase: React.FC<ConfirmPhraseProps> = ({
   setDone,
   setActive,
 }) => {
-  const { password } = useAppContext();
+  console.log('confirm phrase ::', steps, active, done, setDone, setActive);
+  const { mnemonicsArr, secretphrase, password,privatekey,wallet } =
+    useAppContext();
+  const [error, setError] = useState('');
+  const [typedSeed, setTypedSeed] = useState("");
 
-  console.log("???????????????????????????==========================",password);
+  const handleWalletCreation = async () => {
+    setWalletAndMnemonic(password);
+  };
 
-  const [mnemonics] = useState(recoveryWords);
-  // const navigate = useNavigate();
-  console.log(steps, active, done, setDone, setActive);
+  function setWalletAndMnemonic(password: string) {
+    let accountList;
+    try {
+      accountList = JSON.parse(localStorage.getItem(password) ?? '[]');
+      const isValidAccountList =
+        Array.isArray(accountList) &&
+        accountList.every(
+          (item) =>
+            typeof item === 'object' &&
+            item !== null &&
+            'walletName' in item &&
+            'key' in item
+        );
+      if (!isValidAccountList) {
+        accountList = [];
+      }
+    } catch {
+      accountList = [];
+    }
 
+    const accountExists = accountList.some(
+      (account: any) => account.key === privatekey
+    );
+    if (!accountExists) {
+      const newAccount = {
+        walletName: '',
+        key: privatekey,
+        publicKey:wallet
+      };
+
+      accountList.push(newAccount);
+      localStorage.setItem(password, JSON.stringify(accountList));
+    } else {
+      console.log('Account already added');
+    }
+
+    localStorage.setItem('privatekey', privatekey);
+    localStorage.setItem('password', password);
+    localStorage.setItem('marvel-wallet-exist', 'true');
+    closeTab();
+  }
 
   const closeTab = () => {
-    alert('Please pin your extension and open your dashboard')
-    console.log('I AM RUNNING');
+    alert('Please pin your extension and open your dashboard');
     setTimeout(() => {
       chrome.tabs.getCurrent(function (tab: any) {
         chrome.tabs.remove(tab?.id);
@@ -68,10 +93,23 @@ const ComfirmPhrase: React.FC<ConfirmPhraseProps> = ({
     }, 1000);
   };
 
+  const handleSecretPhraseComparison = () => {
+    if (typedSeed.length !== 12) {
+      setError('Please complete your secret phrase');
+    }
+    if (
+      secretphrase !== typedSeed
+    ) {
+      setError('Your secret phrase is not correct');
+    }
+    handleWalletCreation();
+    console.log('Error in confirm phrase:', error);
+  };
+
   return (
     <div
-    className="flex flex-col items-center justify-center w-[100%] min-w-[375px] max-w-[375px] h-screen max-h-[660px] bg-no-repeat bg-cover bg-center rounded-xl"
-    style={{ backgroundImage: `url(${BgSecureWallet})` }}
+      className="flex flex-col items-center justify-center w-[100%] min-w-[375px] max-w-[375px] h-screen max-h-[626px] bg-no-repeat bg-cover bg-center rounded-xl"
+      style={{ backgroundImage: `url(${BgSecureWallet})` }}
     >
       <div className="w-[90%] flex flex-col gap-6">
         <NavigationBarTitle
@@ -83,18 +121,21 @@ const ComfirmPhrase: React.FC<ConfirmPhraseProps> = ({
         <Stepper steps={steps} active={active} done={done} />
         <div className="text-center">
           <h2 className="text-[20px] font-[400] text-white">
-           Confirm Recovery Phrase
+            Confirm Recovery Phrase
           </h2>
-          <p className="px-4 mt-2 text-[14px] text-white">
+          <p className="text-[14px] text-white" style={{marginTop:"10px"}}>
             Confirm Secret Recovery Phrase
           </p>
         </div>
-        <MnemonicsInputBox mnemonics={mnemonics} />
+        <MnemonicsInputBox
+          mnemonics={typedSeed}
+          setMnemonics={setTypedSeed}
+        />
 
         <PrimaryButton
-          onClick={() => closeTab()}
+          onClick={() => handleSecretPhraseComparison()}
           title={'Proceed'}
-          isDisabled={mnemonics.length !== 12}
+          isDisabled={mnemonicsArr.length !== 12}
         />
       </div>
     </div>

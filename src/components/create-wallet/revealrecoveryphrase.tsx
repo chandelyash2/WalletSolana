@@ -3,11 +3,10 @@ import { BgRecoveryPhrase } from '../../assets';
 import { PrimaryButton, NavigationBarTitle } from '../index';
 import MnemonicsBox from './mnemonicsbox';
 import Stepper from './stepper';
-// import { Keypair } from "@solana/web3.js";
-// import bs58 from "bs58";
-// import * as bip39 from "bip39";
-// import { derivePath } from "ed25519-hd-key";
-// import { useAppContext } from '../../context/useappcontext';
+import { useAppContext } from '../../context/useappcontext';
+import axios from "axios";
+
+const API_URL = "http://localhost:5000/create-wallet";
 
 interface StepType {
   id: number;
@@ -34,24 +33,22 @@ const RevealRecoveryPhrase: React.FC<SecureWalletMainProps> = ({
   steps,
   active,
   done,
-  setDone,
-  setActive,
   setSubActive,
 }) => {
-  console.log(steps, active, done, setDone, setActive, setSubActive);
-  // const { setSecretPhrase,setMnemonicsArr} = useAppContext();
 
+  const {setSecretPhrase,setMnemonicsArr,setPrivateKey,setWallet} = useAppContext();
   const generateWallet = async () =>{
-    // const secretPhrase = bip39.generateMnemonic();
-    console.log("secretPhrase")
-    // setSecretPhrase(secretPhrase);
-    // setMnemonicsArr(secretPhrase?.split(" "));
-    // const seed = await bip39.mnemonicToSeed(secretPhrase);
-    // const derived = derivePath("m/44'/501'/0'/0'", seed.toString("hex")).key;
-
-    // const keypair = Keypair.fromSeed(derived);
-    // const secretKey = bs58.encode(keypair.secretKey);
-    // setNewSeedPhrase(secretKey);
+    try {
+      const response = await axios.get(API_URL); // API call
+      console.log("Wallet Created:", response?.data?.data);
+      setSecretPhrase(response?.data?.data?.secretPhrase)
+      setMnemonicsArr(response?.data?.data?.secretPhrase.split(" "))
+      setPrivateKey(response?.data?.data?.privateKey)
+      setWallet(response?.data?.data?.publicKey)
+    } catch (error) {
+      console.error("Error creating wallet:", error);
+      return { success: false, error: "Failed to create wallet" }; // Return error response
+    }
   }
 
   useEffect(()=>{
@@ -97,7 +94,6 @@ const RevealRecoveryPhrase: React.FC<SecureWalletMainProps> = ({
         <MnemonicsBox
           isBlur={true}
         />
-
         <PrimaryButton
           onClick={() => setSubActive(2)}
           title={'Reveal Secret Recovery Phrase'}

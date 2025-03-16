@@ -4,16 +4,25 @@ import {
   RecoverWallet,
   CreateWallet,
   WalletBoard,
+  // ReceiveSol,
+  RecoverByPhrase,
+  Send,
+  //  SecretKey, 
+  //  Dashboard,
+    // Summary
 } from './components/index';
 import OnBoardingLayout from './components/onboarding-layout';
-
+import PublicRoute from './publicroute';
+import PrivateRoute from './privateroute';
 const routes = [
   {
     path: '/',
     element: (
-      <OnBoardingLayout>
-        <Splash />
-      </OnBoardingLayout>
+      <PublicRoute>
+        <OnBoardingLayout>
+          <Splash />
+        </OnBoardingLayout>
+      </PublicRoute>
     ),
   },
   {
@@ -27,22 +36,76 @@ const routes = [
   {
     path: '/recover-wallet',
     element: (
-      <OnBoardingLayout>
+      <PublicRoute>
+        <OnBoardingLayout>
         <RecoverWallet />
       </OnBoardingLayout>
+      </PublicRoute>
     ),
   },
+  {
+    path: '/recover-secret-phrase',
+    element: (
+      <PublicRoute>
+        <OnBoardingLayout>
+          <RecoverByPhrase />
+        </OnBoardingLayout>
+      </PublicRoute>
+    ),
+  },
+  // {
+  //   path: '/wallet-board',
+  //   element: (
+  //     <PrivateRoute>
+  //       <Dashboard />
+  //     </PrivateRoute>
+  //   ),
+  // },
+  // {
+  //   path: '/receive-sol',
+  //   element: (
+  //     <ReceiveSol />
+  //   ),
+  // },
+  // {
+  //   path: '/summary',
+  //   element: (
+  //     <Summary />
+  //   ),
+  // },
   {
     path: '/create-wallet',
     element: (
-      <OnBoardingLayout>
+      <PublicRoute>
+        <OnBoardingLayout>
         <CreateWallet />
       </OnBoardingLayout>
+      </PublicRoute>
+    ),
+  },
+  // {
+  //   path: '/secret-key',
+  //   element: (
+  //     <OnBoardingLayout>
+  //       <SecretKey />
+  //     </OnBoardingLayout>
+  //   ),
+  // },
+  {
+    path: '/wallet-board',
+    element: (
+      <PrivateRoute>
+        <WalletBoard />
+      </PrivateRoute>
     ),
   },
   {
-    path: '/wallet-board',
-    element: <WalletBoard />,
+    path: '/send',
+    element: (
+      <PrivateRoute>
+        <Send />
+      </PrivateRoute>
+    ),
   },
 ];
 

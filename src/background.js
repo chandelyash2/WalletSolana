@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener( (message) => {
       // await chrome.storage.local.remove('isOnBoarding');
       setTimeout(async() => {
         await chrome.storage.local.remove('isOnBoarding');
-      }, 200);
+      }, 3000);
     }
   });
 });

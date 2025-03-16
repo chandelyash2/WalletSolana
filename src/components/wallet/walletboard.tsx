@@ -1,15 +1,36 @@
-import { BgRecoveryPhrase } from '../../assets';
+import { useEffect } from 'react';
+import BalanceBoard from './balanceboard';
+import ActionsMenu from './actions';
+import useTokenBalance from '../../hooks/usetokensandbalances';
+import Assets from './assets';
+import DashboardLayout from "../dashboardLayout/index";
 
+const WalletBoard: React.FC = () => {
+  const { usdbal,setAddress,tokens } = useTokenBalance();
 
-const WalletBoard:React.FC = ()=> {
-    return(
-        <div
-        className="flex flex-col items-center justify-center w-full max-w-[375px] h-screen min-h-[600px] max-h-[600px] bg-no-repeat bg-cover bg-center rounded-xl gap-8 text-white"
-        style={{ backgroundImage: `url(${BgRecoveryPhrase})` }}
-      >
-        USER DASHBORD
-      </div>
-    )
-}
+  useEffect(() => {
+    console.log('wallet dashboard render');
+    setWalletInLocal();
+  }, []);
+
+  const setWalletInLocal = async () => {
+    let password: any = localStorage.getItem('password');
+    console.log('pass', password);
+    let accounts: any = localStorage.getItem(password);
+    console.log(accounts);
+    let defaults: any = JSON.parse(accounts);
+    console.log(defaults[0]);
+    setAddress(defaults[0]?.publicKey);
+  };
+
+  return (
+    <DashboardLayout showSearchCoin={true} showFooter={true} title="">
+        <BalanceBoard usdBalance={usdbal} />
+        <ActionsMenu />
+        <Assets tokens={tokens} />
+      </DashboardLayout>
+  );
+
+};
 
 export default WalletBoard;

@@ -1,17 +1,23 @@
 import Splash from "./splash/splash";
 import AddWallet from "./add-wallet/addwallet";
-import {PrimaryButton} from "./common/primary-button";
-import {SecondaryButton} from "./common/secondary-button";
-import {NavigationBarTitle} from "./common/navigationbartitle";
+import { PrimaryButton } from "./common/primary-button";
+import { SecondaryButton } from "./common/secondary-button";
+import { NavigationBarTitle } from "./common/navigationbartitle";
 import CreatePassword from "./create-wallet/createpassword";
 import RecoverWallet from "./recover-wallet/recoverwallet"
 import CreateWallet from "./create-wallet/createwallet";
 import SecureWallet from "./create-wallet/securewallet";
 import ConfirmPhrase from "./create-wallet/confirmphrase";
 import WalletBoard from "./wallet/walletboard";
+import RecoverByPhrase from "./recover-wallet/recoverbyphrase"
+import SecretKey from "./secretKey/SecretKey"
+import Dashboard from "./dashboard/index";
+import ReceiveSol from "./receivesol/index"
+import Summary from "./summary/index";
+import Send from "./send/index";
 
 export {
-    Splash ,
+    Splash,
     AddWallet,
     PrimaryButton,
     SecondaryButton,
@@ -21,5 +27,11 @@ export {
     SecureWallet,
     ConfirmPhrase,
     NavigationBarTitle,
-    WalletBoard
+    Dashboard,
+    WalletBoard,
+    ReceiveSol,
+    Summary,
+    RecoverByPhrase,
+    SecretKey,
+    Send
 }

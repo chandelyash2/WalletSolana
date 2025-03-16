@@ -12,12 +12,16 @@ function App() {
   }, []);
   const getSetLocalStorage = async () => {
     const { isOnBoarding } = await chrome.storage.local.get('isOnBoarding');
-    console.log('isOnBoarding', isOnBoarding);
+    const isWalletExist =
+      localStorage.getItem('marvel-wallet-exist') ?? 'false';
+    console.log('isOnBoarding', isOnBoarding, 'isWalletExist', isWalletExist);
     if (!isOnBoarding || isOnBoarding === undefined) {
-      chrome.runtime.sendMessage({ action: 'redirect' });
-      await chrome.storage.local.set({
-        isOnBoarding: true,
-      });
+      if (isWalletExist === 'false') {
+        chrome.runtime.sendMessage({ action: 'redirect' });
+        await chrome.storage.local.set({
+          isOnBoarding: true,
+        });
+      }
     }
   };
   return (

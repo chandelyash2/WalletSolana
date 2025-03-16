@@ -16,8 +16,32 @@ import EyeSlash from "./icons/eye-slash.png";
 import CopySmall from "./icons/copy-small.png";
 import LogoBlack from "./icons/logo-black-mx.png";
 import HelpIcon from "./icons/help.png";
+import SendIcon from "./icons/send-icon.png";
+import ReceiveIcon from "./icons/receive-icon.png";
+import SwapIcon from "./icons/swap.png";
+import BuyIcon from "./icons/buy.png";
+import SolanaImg from "./icons/solana-color.png";
+import UsdtImg from "./icons/usdt-color.png";
+import MenuIcon1 from "./icons/menu-icon-1.png";
+import MenuIcon2 from "./icons/menu-2-icon.png"
+import MenuIcon3 from "./icons/menu-3-icon.png"
+import MenuIcon4 from "./icons/menu-last-icon.png";
+import MenuButtonIcon from "./icons/swap-button-icon.png";
+import NavigationBarImg from "./icons/navigation-bar-img.png";
+import SOL from "./crypto-icons/SOL.svg";
 
 export {
+    SendIcon,
+    ReceiveIcon,
+    SwapIcon,
+    SolanaImg,
+    UsdtImg,
+    MenuIcon1,
+    MenuIcon2,
+    MenuIcon3,
+    MenuIcon4,
+    MenuButtonIcon,
+    BuyIcon,
     SplashImg,
     AddWalletIcon,
     logoIcon,
@@ -35,5 +59,7 @@ export {
     EyeSlash,
     CopySmall,
     LogoBlack,
-    HelpIcon
+    HelpIcon,
+    NavigationBarImg,
+    SOL
 }

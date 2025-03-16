@@ -72,11 +72,11 @@ const SecureWalletMain: React.FC<SecureWalletMainProps> = ({
           <h3 className="text-[14px] font-[600] text-white ml-4">
             How do I save my Secret Recovery Phrase?
           </h3>
-          <ul className="ml-4 text-white font-[200] list-disc">
-            <li style={{ marginLeft: '12px', lineHeight: '20px' }}>
+          <ul className="ml-4 text-gray-400 font-[200] list-disc">
+            <li style={{ marginLeft: '14px', lineHeight: '20px',color:"white" }}>
               Write down and store in multiple secret places
             </li>
-            <li style={{ marginLeft: '12px', lineHeight: '20px' }}>
+            <li style={{ marginLeft: '14px', lineHeight: '20px',color:"white" }}>
               Store in a safe deposit box
             </li>
           </ul>
@@ -85,20 +85,19 @@ const SecureWalletMain: React.FC<SecureWalletMainProps> = ({
           className="bg-[#2A2E4F] rounded-xl h-[89px] w-full"
           style={{
             display: 'flex',
-            alignItems: 'flex-start',
-            justifyContent: 'flex-start',
+            alignItems: 'center',
+            justifyContent: 'center',
             padding: '12px',
           }}
         >
           <p
-            className="text-[14px] text-white font-[500] text-start"
+            className="text-[14px] text-white font-[600] text-start"
             style={{ lineHeight: '22px' }}
           >
             If someone asks for your recovery phrase, they are likely trying to
             scam you and steal your funds
           </p>
         </div>
-
         <SecondaryButton
           onClick={handleNavigateToOnBorading}
           title={'Remind me later (not recommended)'}
@@ -108,6 +107,7 @@ const SecureWalletMain: React.FC<SecureWalletMainProps> = ({
           title={'Secure my wallet (recommended)'}
         />
       </div>
+
     </div>
   );
 };

@@ -9,7 +9,7 @@ const Splash: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       navigate('/add-wallet');
-    }, 1000);
+    }, 3000);
   }, []);
   
   return (

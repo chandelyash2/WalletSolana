@@ -1,0 +1,86 @@
+import React from 'react';
+import bgsecure from "../../assets/Dashboard.png";
+import CustomDropdown from '../common/CustomDropdown';
+import DashFooter from '../dashFooter/index';
+import firsttimeprofile from "../../assets/icons/firsttimepro.svg";
+import { NavigationBarTitle, PrimaryButton, SecondaryButton } from '../index';
+import firsttimeprofiles from '../../assets/icons/firsttimeprofile.svg'
+import settings from '../../assets/icons/setting.svg'
+import addwallet from "../../assets/icons/add-square.svg"
+import { SearchIcon } from '../../assets/SvgIcon';
+interface DashLayoutProps {
+	children: React.ReactNode;
+	title: string;
+	showSearchCoin?: boolean;
+	showFooter?: boolean;
+	showButton?: boolean;
+	btntitle?: string;
+	showDoubleBtn?: boolean;
+	transbtn?: string;
+	onClick?: () => void;
+}
+
+const DashLayout = ({
+	children,
+	title,
+	showSearchCoin = false,
+	showFooter = false,
+	showButton = false,
+	showDoubleBtn = false,
+	onClick = () => { },
+	transbtn = '',
+	btntitle = '',
+}: DashLayoutProps) => {
+	const dropdownItems = [
+		{ label: "First time", icon: <img src={firsttimeprofiles} alt='imgs' />, onClick: () => console.log("First time clicked") },
+		{ label: "Settings", icon: <img src={settings} alt='imgs' />, onClick: () => console.log("Settings clicked") },
+		{ label: "Add / Connect wallet", icon: <img src={addwallet} alt='imgs' />, onClick: () => console.log("Wallet clicked") },
+	];
+	return (
+		<div className="flex justify-center w-full m-auto h-screen min-h-[600px]">
+			<div
+				className="flex flex-col max-h-[600px] h-screen w-full bg-no-repeat bg-cover mx-auto"
+				style={{ backgroundImage: `url(${bgsecure})`, backgroundSize: '100% 100%' }}
+			>
+				{showSearchCoin && (
+					<div className="flex gap-[10px] justify-between" style={{ padding: '23px 15px 12px 15px' }}>
+						<div className="flex gap-[7px] max-w-[300px] w-full">
+							<img src={firsttimeprofile} alt="imgs" />
+							<p className="text-[10px] font-normal text-[#A5A5A5] flex flex-col">
+								@JamesScott
+								<div className="flex items-center justify-center">
+									<CustomDropdown label="First time" items={dropdownItems} />
+								</div>
+							</p>
+						</div>
+						<SearchIcon />
+					</div>
+				)}
+
+				{!showSearchCoin && (
+					<div style={{ padding: '23px 15px 12px 15px' }}>
+						<NavigationBarTitle title={title} />
+					</div>
+				)}
+				<div className="flex-1 overflow-auto" style={{ padding: '10px 16px 10px' }}>
+					{children}
+				</div>
+				{showFooter && <DashFooter />}
+				{showButton && (
+					<div style={{ padding: '10px 15px 5px' }} onClick={onClick}>
+						<PrimaryButton title={btntitle} />
+					</div>
+				)}
+
+				{showDoubleBtn && (
+					<div className="flex gap-[16px]" style={{ padding: '10px 14px 5px' }}>
+						<SecondaryButton title={transbtn} />
+						<PrimaryButton title={btntitle} onClick={onClick} />
+					</div>
+				)}
+			</div>
+		</div>
+	);
+};
+
+export default DashLayout;

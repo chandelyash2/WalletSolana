@@ -38,24 +38,28 @@ const RECOVER_WALLET_OPTIONS = [
     icon: EditSmall,
     title: 'Import Secret Recovery Key Phrase',
     description: 'Use a 12 word seed phrase',
+    path:'/recover-secret-phrase'
   },
   {
     id: 2,
     icon: KeySmall,
     title: 'By Private Key',
     description: '',
+    path:'/recover-private-key'
   },
   {
     id: 3,
     icon: CloudSmall,
     title: 'iCloud or Google Backup',
     description: 'Restore wallet from iCloud or Google',
+     path:'/recover-google'
   },
   {
     id: 4,
     icon: EyeSmall,
     title: 'Watch Wallet',
     description: 'Observe or track assets of other SOL wallet',
+    path:'/watch-wallet'
   },
 ];
 
@@ -64,6 +68,15 @@ const PUBLIC_ROUTES = {
   RECOVER_WALLET: '/recover-wallet',
   CREATE_WALLET: '/create-wallet',
   WALLET_ONBOARD: '/wallet-board',
+  RECOVER_BY_PHRASE:'/recover-secret-phrase'
 };
 
-export { ADD_WALLET_FEATURES, RECOVER_WALLET_OPTIONS, PUBLIC_ROUTES };
+const BASE_URL='http://localhost:5000'
+const API_URL={
+  createWallet:`${BASE_URL}/create-wallet`,
+  getTokens:`${BASE_URL}/getTokens`,
+  recoverWallet:`${BASE_URL}/recover-wallet`
+}
+
+
+export { ADD_WALLET_FEATURES, RECOVER_WALLET_OPTIONS, PUBLIC_ROUTES,API_URL };
