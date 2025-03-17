@@ -5,6 +5,7 @@ import Stepper from '../create-wallet/stepper';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../constants';
 import { useAppContext } from '../../context/useappcontext';
+import { ValidationError } from '../common/errortext';
 
 interface StepType {
   id: number;
@@ -56,11 +57,9 @@ const CreatePassword: React.FC<CreatePasswordProps> = ({
   function savePasswordAndProceed() {
     if (password !== confirmpassword) {
       setError('Passwords do not match.');
-    } 
-    else if(!checked){
-      setError('You have not checked the policies.')
-    }
-    else {
+    } else if (!checked) {
+      return;
+    } else {
       setError('');
       setActive(1);
       setDone((prev: number[]) => [...prev, 0]);
@@ -106,7 +105,12 @@ const CreatePassword: React.FC<CreatePasswordProps> = ({
           <div className="relative">
             <input
               value={password}
-              onChange={(e) => passAdjust(e)}
+              onChange={(e) => {
+                if (confirmpassword === e.target.value) {
+                  setError('');
+                }
+                passAdjust(e);
+              }}
               type={showPassword ? 'text' : 'password'}
               className="w-full h-[46px] px-4 py-2 text-white bg-transparent border border-white rounded-lg focus:outline-none focus:ring-0"
             />
@@ -119,15 +123,26 @@ const CreatePassword: React.FC<CreatePasswordProps> = ({
           </p>
           <input
             value={confirmpassword}
-            onChange={(e) => confirmpassAdjust(e)}
-            type="password"
+            onChange={(e) => {
+              if (password === e.target.value) {
+                setError('');
+              }
+              confirmpassAdjust(e);
+            }}
+            type={showPassword ? 'text' : 'password'}
             className="w-full h-[46px] px-4 py-2 text-white bg-transparent border border-white rounded-lg focus:outline-none focus:ring-0"
           />
+
+          <div style={{ marginTop: '5px' }}>
+            {error && <ValidationError error={error} />}
+          </div>
         </div>
 
         <div className="flex items-start gap-4 mt-8 mb-6 space-x-2 text-sm text-white">
           <input
-            onChange={()=>setChecked(!checked)}
+            onChange={() => {
+              setChecked(!checked);
+            }}
             type="checkbox"
             // className="flex items-center justify-center w-6 h-4 bg-transparent border border-white-600 appearance-none rounded-[3px] checked:bg-[#1142C7] checked:border-transparent focus:ring-0 after:content-['✔'] after:text-white"
             className="flex items-center justify-center w-6 h-4 bg-transparent border border-white-600 appearance-none rounded-[3px] checked:bg-[#1142C7] checked:border-transparent focus:ring-0 after:content-['✔'] after:text-white after:text-[12px] after:font-bold after:flex after:items-center after:justify-center checked:after:opacity-100 after:opacity-0"
