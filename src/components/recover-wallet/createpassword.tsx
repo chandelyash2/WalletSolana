@@ -4,18 +4,16 @@ import { PrimaryButton, NavigationBarTitle } from '../index';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../constants';
 import { useAppContext } from '../../context/useappcontext';
+import { ValidationError } from '../common/errortext';
 
 interface RecoverWalletCreatePasswordProps {
-  active: number;
   setActive: Function;
 }
 
 const RecoverWalletCreatePassword: React.FC<RecoverWalletCreatePasswordProps> = ({
-  active,
   setActive
 
 }) => {
-  console.log('recover create password :',active)
   const navigate = useNavigate();
   const { password, setPassword, confirmpassword, setConfirmPassword } =
     useAppContext();
@@ -41,7 +39,7 @@ const RecoverWalletCreatePassword: React.FC<RecoverWalletCreatePasswordProps> = 
       setError('Passwords do not match.');
     } 
     else if(!checked){
-      setError('You have not checked the policies.')
+     return;
     }
     else {
       setError('')
@@ -86,7 +84,11 @@ const RecoverWalletCreatePassword: React.FC<RecoverWalletCreatePasswordProps> = 
           <div className="relative">
             <input
               value={password}
-              onChange={(e) => passAdjust(e)}
+              onChange={(e) => {
+                if (confirmpassword === e.target.value) {
+                  setError('');
+                }
+                passAdjust(e)}}
               type={showPassword ? 'text' : 'password'}
               className="w-full h-[46px] px-4 py-2 text-white bg-transparent border border-white rounded-lg focus:outline-none focus:ring-0"
             />
@@ -99,12 +101,19 @@ const RecoverWalletCreatePassword: React.FC<RecoverWalletCreatePasswordProps> = 
           </p>
           <input
             value={confirmpassword}
-            onChange={(e) => confirmpassAdjust(e)}
-            type="password"
+            onChange={(e) => {
+              if (password === e.target.value) {
+                setError('');
+              }
+              confirmpassAdjust(e)}}
+              type={showPassword ? 'text' : 'password'}
             className="w-full h-[46px] px-4 py-2 text-white bg-transparent border border-white rounded-lg focus:outline-none focus:ring-0"
           />
+           <div style={{ marginTop: '5px' }}>
+            {error && <ValidationError error={error} />}
+          </div>
         </div>
-
+          
         <div className="flex items-start gap-4 mt-8 mb-6 space-x-2 text-sm text-white">
           <input
             onChange={()=>setChecked(!checked)}
