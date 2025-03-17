@@ -13,7 +13,7 @@ import BgSecureWallet from "./bg-secure-wallet.png";
 import EyeFilled from "./icons/eye-filled.png";
 import BgRecoveryPhrase from "./bg-recovery-phrase.png";
 import EyeSlash from "./icons/eye-slash.png";
-import CopyIcon from "./icons/copy-icon.png";
+import CopySmall from "./icons/copy-small.png";
 import LogoBlack from "./icons/logo-black-mx.png";
 import HelpIcon from "./icons/help.png";
 import SendIcon from "./icons/send-icon.png";
@@ -29,12 +29,31 @@ import MenuIcon4 from "./icons/menu-last-icon.png";
 import MenuButtonIcon from "./icons/swap-button-icon.png";
 import NavigationBarImg from "./icons/navigation-bar-img.png";
 import SOL from "./crypto-icons/SOL.svg";
+import ExportIcon from './icons/export.svg'
+import EmptyWallet from './icons/empty-wallet.svg'
+import PreferenceIcon from './icons/setting-3.svg'
+import LockIcon from './icons/lock.svg'
+import ActiveNextwork from './icons/global.svg'
+import AddressBook from './icons/book.svg'
+import Connectedapp from './icons/3square.svg'
+import DeveloperSetting from './icons/code-circle.svg'
+import ExpFeature from './icons/command-square.svg'
+import HelpSupport from './icons/message-question.svg'
+import AboutMarve from './icons/Asset 1 1.svg'
 import GreenTickImg from "./icons/green-tick.png";
-import InputEditIcon from "./icons/edit-2.png";
-import CopiedIcon from './icons/copied-icon.png';
-
 export {
     SendIcon,
+    EmptyWallet,
+    LockIcon,
+    ActiveNextwork,
+    PreferenceIcon,
+    ExportIcon,
+    AboutMarve,
+    ExpFeature,
+    HelpSupport,
+    DeveloperSetting,
+    Connectedapp,
+    AddressBook,
     ReceiveIcon,
     SwapIcon,
     SolanaImg,
@@ -60,12 +79,10 @@ export {
     EyeFilled,
     BgRecoveryPhrase,
     EyeSlash,
-    CopyIcon,
+    CopySmall,
     LogoBlack,
     HelpIcon,
     NavigationBarImg,
     SOL,
-    GreenTickImg,
-    InputEditIcon,
-    CopiedIcon
+    GreenTickImg
 }

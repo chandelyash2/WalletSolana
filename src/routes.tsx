@@ -15,6 +15,7 @@ import OnBoardingLayout from './components/onboarding-layout';
 import PublicRoute from './publicroute';
 import PrivateRoute from './privateroute';
 import Receive from './components/receive';
+import Settings from './components/settings';
 const routes = [
   {
     path: '/',
@@ -113,6 +114,14 @@ const routes = [
     element: (
       <PrivateRoute>
         <EditAccount />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: '/settings',
+    element: (
+      <PrivateRoute>
+        <Settings />
       </PrivateRoute>
     ),
   },

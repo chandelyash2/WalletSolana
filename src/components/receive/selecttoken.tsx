@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CopiedIcon, CopyIcon, SOL, SplashImg } from '../../assets/index';
+import { CopySmall, SOL, SplashImg } from '../../assets/index';
 import useTokenBalance from '../../hooks/usetokensandbalances';
 import { DotFormatAddress } from '../../helpers/common/dotformataddress';
 
@@ -128,8 +128,8 @@ const SelectToken: React.FC<SelectTokenProps> = ({
               </div>
             </div>
             <div className="w-[35px] h-[35px] rounded-lg bg-gray-400 items-center justify-between">
-              {!copied && <button onClick={()=> copyToClipBoard(token?.associatedTokenAddress)} ><img src={CopyIcon} alt="copy icon"/></button>}
-              {copied && <img src={CopiedIcon} alt="copied icon" />}
+              {!copied && <button onClick={()=> copyToClipBoard(token?.associatedTokenAddress)} ><img src={CopySmall} alt="copy icon"/></button>}
+              {copied && <img src={CopySmall} alt="copied icon" />}
             </div>
           </div>
         ))}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BgSecureWallet, InputEditIcon } from '../../assets/index';
+import { BgSecureWallet, EditSmall } from '../../assets/index';
 import { PrimaryButton } from '../common/primary-button';
 import { DotFormatAddress } from '../../helpers/common/dotformataddress';
 import { validateSolanaAddress } from '../../helpers/solana/transaction';
@@ -92,7 +92,7 @@ const EnterAmount: React.FC<EnterAmountProps> = ({
             />
           </div>
           <button className="text-gray-400 cursor-pointer" onClick={()=> setInputDisabled(false)}>
-            <img src={InputEditIcon} alt='' className='w-[20px] h-[20px]' />
+            <img src={EditSmall} alt='' className='w-[20px] h-[20px]' />
           </button>
         </div>
         <ValidationError error={error} />
