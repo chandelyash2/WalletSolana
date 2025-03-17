@@ -13,6 +13,8 @@ interface AppContextType {
   setMnemonicsArr:Function;
   setPrivateKey:Function;
   privatekey:string;
+  privatekeyarr:Array<any>;
+  setPrivateKeyArr:Function;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -28,9 +30,10 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
   const [secretphrase, setSecretPhrase] = useState<any>('');
   const [mnemonicsArr, setMnemonicsArr] = useState<any>('');
   const [privatekey, setPrivateKey] = useState<any>('');
+  const [privatekeyarr, setPrivateKeyArr] = useState<any>('');
 
   return (
-    <AppContext.Provider value={{ password,confirmpassword,wallet,secretphrase,setPassword,setConfirmPassword,setWallet,setSecretPhrase,mnemonicsArr,setMnemonicsArr,setPrivateKey,privatekey }}>
+    <AppContext.Provider value={{ password,confirmpassword,wallet,secretphrase,setPassword,setConfirmPassword,setWallet,setSecretPhrase,mnemonicsArr,setMnemonicsArr,setPrivateKey,privatekey,setPrivateKeyArr,privatekeyarr }}>
       {children}
     </AppContext.Provider>
   );

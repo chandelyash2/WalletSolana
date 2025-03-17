@@ -4,16 +4,16 @@ import {
   RecoverWallet,
   CreateWallet,
   WalletBoard,
-  // ReceiveSol,
   RecoverByPhrase,
   Send,
-  //  SecretKey, 
+  //  SecretKey,
   //  Dashboard,
-    // Summary
+  // Summary
 } from './components/index';
 import OnBoardingLayout from './components/onboarding-layout';
 import PublicRoute from './publicroute';
 import PrivateRoute from './privateroute';
+import Receive from './components/receive';
 const routes = [
   {
     path: '/',
@@ -38,8 +38,8 @@ const routes = [
     element: (
       <PublicRoute>
         <OnBoardingLayout>
-        <RecoverWallet />
-      </OnBoardingLayout>
+          <RecoverWallet />
+        </OnBoardingLayout>
       </PublicRoute>
     ),
   },
@@ -78,19 +78,19 @@ const routes = [
     element: (
       <PublicRoute>
         <OnBoardingLayout>
-        <CreateWallet />
-      </OnBoardingLayout>
+          <CreateWallet />
+        </OnBoardingLayout>
       </PublicRoute>
     ),
   },
-  // {
-  //   path: '/secret-key',
-  //   element: (
-  //     <OnBoardingLayout>
-  //       <SecretKey />
-  //     </OnBoardingLayout>
-  //   ),
-  // },
+  {
+    path: '/receive',
+    element: (
+      <PrivateRoute>
+        <Receive />
+      </PrivateRoute>
+    ),
+  },
   {
     path: '/wallet-board',
     element: (

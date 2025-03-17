@@ -52,10 +52,10 @@ const RecoverWalletCreatePassword: React.FC<RecoverWalletCreatePasswordProps> = 
 
   return (
     <div
-      className="flex flex-col items-center justify-center w-full max-w-[375px] h-screen max-h-[660px] bg-no-repeat bg-cover bg-center rounded-xl"
+      className="flex flex-col items-center justify-center w-full max-w-[375px] h-screen max-h-[580px] bg-no-repeat bg-cover bg-center rounded-xl"
       style={{ backgroundImage: `url(${SplashImg})` }}
     >
-      <div className="w-[90%] flex flex-col gap-8 justify-start">
+      <div className="w-[90%] flex flex-col gap-8">
         <NavigationBarTitle
           title="Recover your wallet"
           callback={() => navigate(PUBLIC_ROUTES.ADD_WALLET)}

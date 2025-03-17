@@ -36,7 +36,7 @@ const RevealRecoveryPhrase: React.FC<SecureWalletMainProps> = ({
   setSubActive,
 }) => {
 
-  const {setSecretPhrase,setMnemonicsArr,setPrivateKey,setWallet} = useAppContext();
+  const {setSecretPhrase,setMnemonicsArr,setPrivateKey,setWallet,setPrivateKeyArr} = useAppContext();
   const generateWallet = async () =>{
     try {
       const response = await axios.get(API_URL); // API call
@@ -45,6 +45,7 @@ const RevealRecoveryPhrase: React.FC<SecureWalletMainProps> = ({
       setMnemonicsArr(response?.data?.data?.secretPhrase.split(" "))
       setPrivateKey(response?.data?.data?.privateKey)
       setWallet(response?.data?.data?.publicKey)
+      setPrivateKeyArr(response?.data?.data?.privateKeyArr)
     } catch (error) {
       console.error("Error creating wallet:", error);
       return { success: false, error: "Failed to create wallet" }; // Return error response

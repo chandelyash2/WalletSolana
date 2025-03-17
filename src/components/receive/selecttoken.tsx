@@ -1,16 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SOL, SplashImg } from '../../assets/index';
+import { CopiedIcon, CopyIcon, SOL, SplashImg } from '../../assets/index';
 import useTokenBalance from '../../hooks/usetokensandbalances';
+import { DotFormatAddress } from '../../helpers/common/dotformataddress';
 
 interface SelectTokenProps {
   active: number;
   setActive: Function;
-  setToken:Function;
+  setToken: Function;
 }
 
-const SelectToken: React.FC<SelectTokenProps> = ({ active, setActive,setToken }) => {
+const SelectToken: React.FC<SelectTokenProps> = ({
+  active,
+  setActive,
+  setToken,
+}) => {
   const { setAddress, tokens } = useTokenBalance();
+  const [copied, setCopied] = useState(false);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   console.log(active, setActive);
@@ -29,13 +35,22 @@ const SelectToken: React.FC<SelectTokenProps> = ({ active, setActive,setToken })
     setAddress(defaults[0]?.publicKey);
   };
 
+
+  const copyToClipBoard = (address:string ) => {
+    navigator.clipboard.writeText(address);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+  };
+
   return (
     <div
       className="h-screen text-white min-h-[600px]"
-       style={{ backgroundImage: `url(${SplashImg})` ,padding: '1rem'}}
+      style={{ backgroundImage: `url(${SplashImg})`, padding: '1rem' }}
     >
       <div className="flex items-center" style={{ marginBottom: '1.5rem' }}>
-        <button style={{ marginRight: '1rem' }} onClick={()=> navigate(-1)}>
+        <button style={{ marginRight: '1rem' }} onClick={() => navigate(-1)}>
           <svg
             className="w-6 h-6 cursor-pointer"
             fill="none"
@@ -95,7 +110,7 @@ const SelectToken: React.FC<SelectTokenProps> = ({ active, setActive,setToken })
             key={token?.symbol}
             className="flex items-center cursor-pointer bg-[#4B50661A] border border-[#222326] rounded-xl"
             style={{ padding: '1rem', marginTop: '10px' }}
-            onClick={()=> {
+            onClick={() => {
               setToken(token);
               setActive(1);
             }}
@@ -108,7 +123,13 @@ const SelectToken: React.FC<SelectTokenProps> = ({ active, setActive,setToken })
             </div>
             <div className="flex-1">
               <div className="font-medium">{token.name}</div>
-              <div className="text-sm text-gray-400">{token?.amount}</div>
+              <div className="text-[14px] font-[400] text-white">
+                {DotFormatAddress(token?.associatedTokenAddress)}
+              </div>
+            </div>
+            <div className="fixed right-1 w-[15px] h-[15px] rounded-xl bg-gray-400">
+              {!copied && <img src={CopyIcon} alt="copy icon" onClick={()=> copyToClipBoard(token?.associatedTokenAddress)} />}
+              {copied && <img src={CopiedIcon} alt="copied icon" />}
             </div>
           </div>
         ))}

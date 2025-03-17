@@ -13,7 +13,7 @@ import BgSecureWallet from "./bg-secure-wallet.png";
 import EyeFilled from "./icons/eye-filled.png";
 import BgRecoveryPhrase from "./bg-recovery-phrase.png";
 import EyeSlash from "./icons/eye-slash.png";
-import CopySmall from "./icons/copy-small.png";
+import CopyIcon from "./icons/copy-icon.png";
 import LogoBlack from "./icons/logo-black-mx.png";
 import HelpIcon from "./icons/help.png";
 import SendIcon from "./icons/send-icon.png";
@@ -29,6 +29,9 @@ import MenuIcon4 from "./icons/menu-last-icon.png";
 import MenuButtonIcon from "./icons/swap-button-icon.png";
 import NavigationBarImg from "./icons/navigation-bar-img.png";
 import SOL from "./crypto-icons/SOL.svg";
+import GreenTickImg from "./icons/green-tick.png";
+import InputEditIcon from "./icons/edit-2.png";
+import CopiedIcon from './icons/copied-icon.png';
 
 export {
     SendIcon,
@@ -57,9 +60,12 @@ export {
     EyeFilled,
     BgRecoveryPhrase,
     EyeSlash,
-    CopySmall,
+    CopyIcon,
     LogoBlack,
     HelpIcon,
     NavigationBarImg,
-    SOL
+    SOL,
+    GreenTickImg,
+    InputEditIcon,
+    CopiedIcon
 }

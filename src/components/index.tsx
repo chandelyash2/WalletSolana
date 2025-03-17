@@ -15,6 +15,7 @@ import Dashboard from "./dashboard/index";
 import ReceiveSol from "./receivesol/index"
 import Summary from "./summary/index";
 import Send from "./send/index";
+import Spinner from "./common/spinner";
 
 export {
     Splash,
@@ -33,5 +34,6 @@ export {
     Summary,
     RecoverByPhrase,
     SecretKey,
-    Send
+    Send,
+    Spinner
 }

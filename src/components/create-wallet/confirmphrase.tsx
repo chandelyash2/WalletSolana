@@ -33,7 +33,7 @@ const ComfirmPhrase: React.FC<ConfirmPhraseProps> = ({
   setActive,
 }) => {
   console.log('confirm phrase ::', steps, active, done, setDone, setActive);
-  const { mnemonicsArr, secretphrase, password,privatekey,wallet } =
+  const { mnemonicsArr, secretphrase, password,privatekey,privatekeyarr,wallet } =
     useAppContext();
   const [error, setError] = useState('');
   const [typedSeed, setTypedSeed] = useState("");
@@ -78,7 +78,8 @@ const ComfirmPhrase: React.FC<ConfirmPhraseProps> = ({
       console.log('Account already added');
     }
 
-    localStorage.setItem('privatekey', privatekey);
+    const uint8Array = new Uint8Array(privatekeyarr);
+    localStorage.setItem('privatekey', JSON.stringify(Array.from(uint8Array)));
     localStorage.setItem('password', password);
     localStorage.setItem('marvel-wallet-exist', 'true');
     closeTab();

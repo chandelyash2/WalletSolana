@@ -8,9 +8,9 @@ import {
 
   const links = [
     { icon: SendIcon, label: 'Send',to:'/send' },
-    { icon: ReceiveIcon, label: 'Receive',to:'/send' },
-    { icon: SwapIcon, label: 'Swap',to:'/send' },
-    { icon: BuyIcon, label: 'Buy',to:'/send' },
+    { icon: ReceiveIcon, label: 'Receive',to:'/receive' },
+    { icon: SwapIcon, label: 'Swap',to:'/' },
+    { icon: BuyIcon, label: 'Buy',to:'/' },
   ]
 
 

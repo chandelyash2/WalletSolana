@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { EyeFilled, CopySmall, EyeSlash } from '../../assets';
+import { EyeFilled, CopyIcon, EyeSlash } from '../../assets';
 import { useAppContext } from '../../context/useappcontext';
 
 interface MnemonicsBoxProps {
@@ -69,7 +69,7 @@ const MnemonicsBox: React.FC<MnemonicsBoxProps> = ({ isBlur, setBlur }) => {
                   copyToClipBoard();
                 }}
               >
-                <img src={CopySmall} alt="" className="" />
+                <img src={CopyIcon} alt="" className="" />
                 <span>{copytext}</span>
               </button>
             </div>
