@@ -96,8 +96,8 @@ const DashLayout = ({
         </div>
         {showFooter && <DashFooter />}
         {showButton && (
-          <div style={{ padding: '10px 15px 5px' }} onClick={onClick}>
-            <PrimaryButton title={btntitle} />
+          <div style={{ padding: '10px 15px 5px' }}>
+            <PrimaryButton title={btntitle} onClick={onClick} />
           </div>
         )}
 
