@@ -1,6 +1,8 @@
 import DashboardLayout from '../dashboardLayout/index'
 import qr from '../../assets/icons/qr.png'
 import warning from '../../assets/icons/warning-2.svg';
+import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 
 interface SelectTokenProps {
 	active: number;
@@ -8,9 +10,19 @@ interface SelectTokenProps {
 	token:any;
   }
 
-const ReceiveSol:React.FC<SelectTokenProps> =({token})=> {
+const ReceiveSol:React.FC<SelectTokenProps> =({token,setActive})=> {
+	// const navigate = useNavigate();
+    const [copytext,setCopyText]=useState('Copy');
+	const copyToClipBoard = () => {
+		navigator.clipboard.writeText(token.associatedTokenAddress);
+		setCopyText('Copied');
+		setTimeout(() => {
+		  setCopyText('Copy');
+		}, 3000);
+	  };
+
 	return (
-		<DashboardLayout title='Receive SOL' showButton={true} btntitle="Copy">
+		<DashboardLayout title='Receive SOL' showButton={true} btntitle={copytext} onClick={()=> copyToClipBoard} backCallback={()=> setActive(0)}>
 			<div className='flex flex-col items-center justify-center' style={{ paddingTop: '62px' }}>
 				<img src={qr} alt='imgs' className='w-[213px] h-[213px]' />
 				<p className='text-[14px]font-semi text-[#fff] w-full max-w-[301px] m-auto whitespace-normal break-words text-center' style={{ padding: '15px 0 50px 0' }}>{token.associatedTokenAddress}</p>

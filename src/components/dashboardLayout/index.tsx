@@ -8,6 +8,8 @@ import firsttimeprofiles from '../../assets/icons/firsttimeprofile.svg'
 import settings from '../../assets/icons/setting.svg'
 import addwallet from "../../assets/icons/add-square.svg"
 import { SearchIcon } from '../../assets/SvgIcon';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../constants';
 interface DashLayoutProps {
 	children: React.ReactNode;
 	title: string;
@@ -18,6 +20,7 @@ interface DashLayoutProps {
 	showDoubleBtn?: boolean;
 	transbtn?: string;
 	onClick?: () => void;
+	backCallback?:Function;
 }
 
 const DashLayout = ({
@@ -30,9 +33,11 @@ const DashLayout = ({
 	onClick = () => { },
 	transbtn = '',
 	btntitle = '',
+	backCallback
 }: DashLayoutProps) => {
+	const navigate = useNavigate();
 	const dropdownItems = [
-		{ label: "First time", icon: <img src={firsttimeprofiles} alt='imgs' />, onClick: () => console.log("First time clicked") },
+		{ label: "First time", icon: <img src={firsttimeprofiles} alt='imgs' />, onClick: () => navigate(ROUTES.EDIT_ACCOUNT) },
 		{ label: "Settings", icon: <img src={settings} alt='imgs' />, onClick: () => console.log("Settings clicked") },
 		{ label: "Add / Connect wallet", icon: <img src={addwallet} alt='imgs' />, onClick: () => console.log("Wallet clicked") },
 	];
@@ -59,7 +64,7 @@ const DashLayout = ({
 
 				{!showSearchCoin && (
 					<div style={{ padding: '23px 15px 12px 15px' }}>
-						<NavigationBarTitle title={title} />
+						<NavigationBarTitle title={title} callback={backCallback} />
 					</div>
 				)}
 				<div className="flex-1 overflow-auto" style={{ padding: '10px 16px 10px' }}>

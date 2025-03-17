@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SplashImg } from '../../assets';
 import { PrimaryButton, NavigationBarTitle } from '../index';
 import { useNavigate } from 'react-router-dom';
-import { PUBLIC_ROUTES } from '../../constants';
+import { ROUTES } from '../../constants';
 import { useAppContext } from '../../context/useappcontext';
 
 interface RecoverWalletCreatePasswordProps {
@@ -58,7 +58,7 @@ const RecoverWalletCreatePassword: React.FC<RecoverWalletCreatePasswordProps> = 
       <div className="w-[90%] flex flex-col gap-8">
         <NavigationBarTitle
           title="Recover your wallet"
-          callback={() => navigate(PUBLIC_ROUTES.ADD_WALLET)}
+          callback={() => navigate(ROUTES.ADD_WALLET)}
         />
 
         {/* Title & Description */}

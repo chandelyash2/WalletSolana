@@ -21,6 +21,7 @@ const MnemonicsBox: React.FC<MnemonicsBoxProps> = ({ isBlur, setBlur }) => {
       setCopyText('Copy To Clipboard');
     }, 5000);
   };
+  
   return (
     <div
       className={`relative flex flex-col items-center justify-center w-[90%] h-[351px] max-w-md ${

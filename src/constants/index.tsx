@@ -63,15 +63,17 @@ const RECOVER_WALLET_OPTIONS = [
   },
 ];
 
-const PUBLIC_ROUTES = {
+const ROUTES = {
   ADD_WALLET: '/add-wallet',
   RECOVER_WALLET: '/recover-wallet',
   CREATE_WALLET: '/create-wallet',
   WALLET_ONBOARD: '/wallet-board',
-  RECOVER_BY_PHRASE:'/recover-secret-phrase'
+  RECOVER_BY_PHRASE:'/recover-secret-phrase',
+  EDIT_ACCOUNT:'/edit-account'
 };
 
-const BASE_URL='http://localhost:5000'
+const BASE_URL='http://localhost:5000';
+
 const API_URL={
   createWallet:`${BASE_URL}/create-wallet`,
   getTokens:`${BASE_URL}/getTokens`,
@@ -79,4 +81,4 @@ const API_URL={
 }
 
 
-export { ADD_WALLET_FEATURES, RECOVER_WALLET_OPTIONS, PUBLIC_ROUTES,API_URL };
+export { ADD_WALLET_FEATURES, RECOVER_WALLET_OPTIONS, ROUTES,API_URL };

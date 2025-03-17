@@ -16,6 +16,7 @@ import ReceiveSol from "./receivesol/index"
 import Summary from "./summary/index";
 import Send from "./send/index";
 import Spinner from "./common/spinner";
+import EditAccount from "./editaccount/index"
 
 export {
     Splash,
@@ -35,5 +36,6 @@ export {
     RecoverByPhrase,
     SecretKey,
     Send,
-    Spinner
+    Spinner,
+    EditAccount
 }

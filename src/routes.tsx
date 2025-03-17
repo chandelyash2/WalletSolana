@@ -6,6 +6,7 @@ import {
   WalletBoard,
   RecoverByPhrase,
   Send,
+  EditAccount,
   //  SecretKey,
   //  Dashboard,
   // Summary
@@ -104,6 +105,14 @@ const routes = [
     element: (
       <PrivateRoute>
         <Send />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: '/edit-account',
+    element: (
+      <PrivateRoute>
+        <EditAccount />
       </PrivateRoute>
     ),
   },

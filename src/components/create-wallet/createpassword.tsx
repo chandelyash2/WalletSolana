@@ -3,7 +3,7 @@ import { SplashImg } from '../../assets';
 import { PrimaryButton, NavigationBarTitle } from '../index';
 import Stepper from '../create-wallet/stepper';
 import { useNavigate } from 'react-router-dom';
-import { PUBLIC_ROUTES } from '../../constants';
+import { ROUTES } from '../../constants';
 import { useAppContext } from '../../context/useappcontext';
 
 interface StepType {
@@ -76,7 +76,7 @@ const CreatePassword: React.FC<CreatePasswordProps> = ({
       <div className="w-[90%] flex flex-col gap-8 justify-start">
         <NavigationBarTitle
           title="Add a wallet"
-          callback={() => navigate(PUBLIC_ROUTES.ADD_WALLET)}
+          callback={() => navigate(ROUTES.ADD_WALLET)}
         />
         {/* Stepper */}
         <Stepper steps={steps} active={active} done={done} />

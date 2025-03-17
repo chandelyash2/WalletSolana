@@ -127,8 +127,8 @@ const SelectToken: React.FC<SelectTokenProps> = ({
                 {DotFormatAddress(token?.associatedTokenAddress)}
               </div>
             </div>
-            <div className="fixed right-1 w-[15px] h-[15px] rounded-xl bg-gray-400">
-              {!copied && <img src={CopyIcon} alt="copy icon" onClick={()=> copyToClipBoard(token?.associatedTokenAddress)} />}
+            <div className="w-[35px] h-[35px] rounded-lg bg-gray-400 items-center justify-between">
+              {!copied && <button onClick={()=> copyToClipBoard(token?.associatedTokenAddress)} ><img src={CopyIcon} alt="copy icon"/></button>}
               {copied && <img src={CopiedIcon} alt="copied icon" />}
             </div>
           </div>

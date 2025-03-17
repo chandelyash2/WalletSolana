@@ -1,7 +1,7 @@
 import React from 'react';
 import { SplashImg, AddWalletIcon } from '../../assets';
 import InfoCard from './info';
-import { ADD_WALLET_FEATURES, PUBLIC_ROUTES } from '../../constants/index';
+import { ADD_WALLET_FEATURES, ROUTES } from '../../constants/index';
 import { NavigationBarTitle, PrimaryButton, SecondaryButton } from '../index';
 import { useNavigate } from 'react-router-dom';
 
@@ -38,11 +38,11 @@ const AddWallet: React.FC = () => {
 
         <PrimaryButton
           title={'Create a new wallet'}
-          onClick={() => navigate(PUBLIC_ROUTES.CREATE_WALLET)}
+          onClick={() => navigate(ROUTES.CREATE_WALLET)}
         />
         <SecondaryButton
           title={'I already have a wallet'}
-          onClick={() => navigate(PUBLIC_ROUTES.RECOVER_WALLET)}
+          onClick={() => navigate(ROUTES.RECOVER_WALLET)}
         />
       </div>
     </div>

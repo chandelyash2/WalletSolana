@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { AddWalletIcon, SplashImg } from '../../assets';
 import { PrimaryButton, NavigationBarTitle } from '../index';
 import { useNavigate } from 'react-router-dom';
-import { PUBLIC_ROUTES, RECOVER_WALLET_OPTIONS } from '../../constants/index';
+import { ROUTES, RECOVER_WALLET_OPTIONS } from '../../constants/index';
 
 const RecoverWallet: React.FC = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const RecoverWallet: React.FC = () => {
       >
         <NavigationBarTitle
           title="Your Keys, Your Crypto"
-          callback={() => navigate(PUBLIC_ROUTES.ADD_WALLET)}
+          callback={() => navigate(ROUTES.ADD_WALLET)}
         />
         <div className="relative flex justify-center">
           <img src={AddWalletIcon} alt="" />
