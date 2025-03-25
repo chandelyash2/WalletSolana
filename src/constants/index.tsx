@@ -72,7 +72,7 @@ const ROUTES = {
   EDIT_ACCOUNT:'/edit-account'
 };
 
-const BASE_URL='http://localhost:5000';
+const BASE_URL='https://walletback-mnlv.onrender.com';
 
 const API_URL={
   createWallet:`${BASE_URL}/user/create-wallet`,
